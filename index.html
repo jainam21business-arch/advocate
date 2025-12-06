@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Advocate Sampatlal & Sanjay Bohara | 55 Years of Legal Excellence | Udaipur</title>
+    <meta name="description" content="Established 1969. Advocate Sampatlal & Sanjay Bohara are leading Civil, Revenue & Property Lawyers in Udaipur, representing clients at Rajasthan High Court & Ajmer Revenue Board.">
+    <meta name="keywords" content="Advocate Sampatlal Sanjay Bohara, Civil Lawyer Udaipur, Property Lawyer Rajasthan, Revenue Board Ajmer Advocate, NRI Legal Services Udaipur, Madhuban Lawyer">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --primary: #1c2a3a; /* Charcoal Navy */
+            --accent: #b89c6f;  /* Muted Gold */
+            --accent-hover: #a38a5f;
+            --white: #ffffff;
+            --light-gray: #f8fafc;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --whatsapp-green: #25D366;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-main);
+            background-color: var(--white);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            line-height: 1.3;
+        }
+
+        a { text-decoration: none; transition: 0.3s; }
+        
+        /* --- UTILITIES --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .text-gold { color: var(--accent); }
+        .section-padding { padding: 100px 0; }
+        .text-center { text-align: center; }
+        
+        .badge-experience {
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 16px 35px;
+            background-color: var(--accent);
+            color: var(--primary);
+            font-weight: 700;
+            border-radius: 4px;
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        .btn:hover { background-color: var(--accent-hover); border-color: var(--accent-hover); }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+        .btn-outline:hover { background-color: var(--white); color: var(--primary); }
+
+        /* --- HEADER & NAV --- */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            top: 0;
+        }
+        
+        .top-bar {
+            background-color: var(--primary);
+            color: var(--white);
+            font-size: 0.85rem;
+            padding: 10px 0;
+        }
+        
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { color: var(--primary); font-weight: 500; font-size: 0.95rem; }
+        .nav-links a:hover { color: var(--accent); }
+        
+        .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            margin-top: 100px;
+            background: linear-gradient(rgba(28, 42, 58, 0.9), rgba(28, 42, 58, 0.8)), 
+                        url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        /* --- STATS BAR --- */
+        .stats-bar {
+            background-color: var(--accent);
+            padding: 40px 0;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+            box-shadow: var(--shadow);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+            color: var(--primary);
+        }
+        .stat-item h3 { color: var(--primary); font-size: 2.5rem; margin-bottom: 5px; font-weight: 800; }
+        .stat-item p { font-size: 0.9rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+
+        /* --- IMPROVED ABOUT SECTION --- */
+        #about { background-color: var(--white); position: relative; }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr; /* Left side slightly wider */
+            gap: 60px;
+            align-items: start;
+        }
+
+        .about-content { text-align: left; }
+
+        .about-subtitle {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .about-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .about-content p {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        /* Highlight Box for Courts */
+        .court-highlight {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: var(--light-gray);
+            border-left: 5px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .court-highlight strong { color: var(--primary); font-weight: 700; }
+
+        /* Elegant Quote Card */
+        .quote-card {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+        }
+
+        .quote-icon {
+            font-size: 4rem;
+            color: var(--accent);
+            opacity: 0.3;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .quote-text {
+            position: relative;
+            z-index: 2;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .quote-author {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- SERVICES --- */
+        .services { background-color: var(--light-gray); }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 15px; }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: 0.4s;
+            border-bottom: 4px solid var(--light-gray);
+        }
+        
+        .service-card:hover { transform: translateY(-10px); border-bottom: 4px solid var(--accent); }
+        .service-icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 25px; }
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+
+        /* --- NRI SECTION --- */
+        .nri-section { background: var(--primary); color: var(--white); }
+        .nri-content { text-align: center; max-width: 800px; margin: 0 auto; }
+        .nri-tag {
+            background: rgba(184, 156, 111, 0.2);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            margin: 5px;
+            display: inline-block;
+        }
+
+        /* --- FAQ SECTION (NEW FEATURE) --- */
+        .faq-section { background-color: var(--white); }
+        .accordion { max-width: 800px; margin: 0 auto; }
+        .accordion-item { border-bottom: 1px solid #e2e8f0; margin-bottom: 10px; }
+        .accordion-header {
+            background: transparent;
+            width: 100%;
+            padding: 20px;
+            text-align: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .accordion-header:hover { color: var(--accent); }
+        .accordion-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: var(--light-gray);
+        }
+        .accordion-content p { padding: 20px 0; color: var(--text-main); }
+        .icon-plus { font-size: 1.2rem; transition: 0.3s; }
+        .active .icon-plus { transform: rotate(45deg); color: var(--accent); }
+
+        /* --- CONTACT --- */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            box-shadow: var(--shadow);
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .contact-info { padding: 50px; background: var(--primary); color: var(--white); }
+        .info-row { display: flex; margin-bottom: 30px; }
+        .info-row i { font-size: 1.5rem; color: var(--accent); margin-right: 20px; margin-top: 5px; }
+        .map-link { display: inline-block; margin-top: 15px; color: var(--accent); font-weight: 600; border-bottom: 2px solid transparent; transition: 0.3s; }
+        .map-link:hover { border-bottom: 2px solid var(--accent); }
+        .map-frame { width: 100%; height: 100%; min-height: 500px; border: 0; }
+
+        /* --- FOOTER --- */
+        footer { background-color: #111a26; color: #94a3b8; padding: 80px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 60px; }
+        .footer-col h4 { color: var(--white); margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; font-size: 1rem; }
+        .footer-col ul li { margin-bottom: 12px; list-style: none; }
+        .footer-col ul li a { color: #94a3b8; }
+        .copyright { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; font-size: 0.9rem; }
+
+        /* --- FLOATING BUTTONS (NEW FEATURE) --- */
+        .floating-wa {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp-green);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 2000;
+            transition: 0.3s;
+        }
+        .floating-wa:hover { transform: scale(1.1); }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 100px;
+            background-color: var(--primary);
+            color: var(--accent);
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            display: flex; /* Hidden by default via JS opacity */
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1999;
+            opacity: 0; 
+            pointer-events: none;
+            transition: 0.3s;
+            border: 1px solid var(--accent);
+        }
+        .scroll-top.visible { opacity: 1; pointer-events: all; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .contact-wrapper { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; } 
+            .hamburger { display: block; }
+            .top-bar { display: none; }
+            .hero { margin-top: 70px; }
+            .scroll-top { right: 20px; bottom: 100px; } /* Move up above WhatsApp */
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/919166866841" class="floating-wa" target="_blank" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <div class="scroll-top" onclick="window.scrollTo(0,0)">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <span><i class="fas fa-history text-gold"></i> Established in 1969 - 55 Years of Excellence</span>
+            <span><i class="fas fa-phone-alt text-gold"></i> +91 9166866841</span>
+        </div>
+    </div>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-balance-scale text-gold" style="font-size: 1.8rem; margin-right: 15px;"></i>
+                <div>
+                    Advocate Sampatlal <br> & Sanjay Bohara
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Firm</a></li>
+                <li><a href="#services">Practice Areas</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact" class="btn" style="padding: 10px 25px; color: var(--primary);">Book Consultation</a></li>
+            </ul>
+            <i class="fas fa-bars hamburger"></i>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container hero-content" data-aos="fade-up">
+            <span class="badge-experience">55 Years of Legal Expertise</span>
+            <h1>Trusted Civil & Property <br> Lawyers in Udaipur</h1>
+            <p>Representing clients across the Rajasthan High Court, Ajmer Revenue Board, and District Courts with integrity and unwavering loyalty since 1969.</p>
+            <div>
+                <a href="tel:+919166866841" class="btn">Call Now</a>
+                <a href="#contact" class="btn btn-outline" style="margin-left: 15px;">Locate Office</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="stats-bar">
+        <div class="container stats-grid" data-aos="fade-in">
+            <div class="stat-item">
+                <h3>1969</h3>
+                <p>Established</p>
+            </div>
+            <div class="stat-item">
+                <h3>55+</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+                <h3>High Court</h3>
+                <p>Rajasthan Practice</p>
+            </div>
+            <div class="stat-item">
+                <h3>NRI</h3>
+                <p>Specialized Services</p>
+            </div>
+        </div>
+    </div>
+
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="about-grid">
+                
+                <div class="about-content" data-aos="fade-right">
+                    <span class="about-subtitle">The Firm</span>
+                    <h2>A Legacy of Justice <br> in Rajasthan</h2>
+                    <p>
+                        Advocate Sampatlal & Sanjay Bohara have been pillars of the legal community in Udaipur for over five decades. 
+                        In a profession defined by trust, our firm is known for its unshakeable integrity and the deep relationships we have built 
+                        through decades of dedicated service.
+                    </p>
+                    <p>
+                        We do not just represent clients; we champion their causes. Our approach combines traditional legal wisdom with modern strategic thinking to ensure the best possible outcomes.
+                    </p>
+
+                    <div class="court-highlight">
+                        <p style="margin-bottom: 0; font-size: 0.95rem;">
+                            We possess deep expertise in the workings of the: <br>
+                            <i class="fas fa-check-circle text-gold" style="margin-right:8px; margin-top:10px;"></i> <strong>Rajasthan High Court</strong><br>
+                            <i class="fas fa-check-circle text-gold" style="margin-right:8px; margin-top:5px;"></i> <strong>Ajmer Revenue Board</strong>
+                        </p>
+                        <p style="font-size: 0.9rem; margin-top: 10px; margin-bottom: 0;">
+                            Whether you are a local resident or an NRI, your property and civil rights are vigorously defended.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="quote-card" data-aos="fade-left">
+                    <div class="quote-icon">“</div>
+                    <p class="quote-text">
+                        Our experience in the field is strengthened by our loyalty to clients and commitment to upholding the law. We work closely with each client, understanding their needs and crafting a legal strategy that aligns with their goals.
+                    </p>
+                    <div class="quote-author">
+                        — Advocate Bohara & Associates
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services section-padding">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="text-gold" style="font-weight: 700; letter-spacing: 1px;">OUR EXPERTISE</span>
+                <h2>Comprehensive Legal Solutions</h2>
+            </div>
+            
+            <div class="service-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-user-shield service-icon"></i>
+                    <h3>Legal Representation</h3>
+                    <p>Our team represents clients in civil, revenue, and property cases, ensuring their rights are protected from lower courts to the High Court.</p>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-home service-icon"></i>
+                    <h3>Landlord & Tenant</h3>
+                    <p>We assist clients in resolving disputes between landlords and tenants, providing expertise in eviction cases, lease disagreements, and rental issues.</p>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-balance-scale-right service-icon"></i>
+                    <h3>Property Disputes</h3>
+                    <p>We have a deep understanding of property law and are dedicated to resolving property conflicts, including inheritance and land ownership.</p>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-lightbulb service-icon"></i>
+                    <h3>Legal Consulting</h3>
+                    <p>We offer expert guidance for all legal matters, empowering our clients with knowledge to make informed decisions regarding their cases.</p>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <i class="fas fa-file-signature service-icon"></i>
+                    <h3>Revenue Records</h3>
+                    <p>Specialized assistance in Khatedari rights, mutation, land conversion, and representation before the Revenue Board in Ajmer.</p>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                    <i class="fas fa-handshake service-icon"></i>
+                    <h3>Family Settlements</h3>
+                    <p>Drafting and executing complex family settlement deeds and wills to prevent future disputes and ensure smooth succession of assets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nri" class="nri-section section-padding">
+        <div class="container nri-content" data-aos="zoom-in">
+            <i class="fas fa-plane-departure text-gold" style="font-size: 3rem; margin-bottom: 20px;"></i>
+            <h2>Dedicated NRI Legal Services</h2>
+            <p>Living abroad? We protect your assets in India. We specialize in representing Non-Resident Indians (NRIs) for property disputes, illegal possession cases, and inheritance matters in Rajasthan without requiring your constant presence.</p>
+            
+            <div style="margin-bottom: 40px;">
+                <span class="nri-tag">Property Monitoring</span>
+                <span class="nri-tag">Remote Representation</span>
+                <span class="nri-tag">Inheritance Claims</span>
+            </div>
+            
+            <a href="https://wa.me/919166866841" class="btn" style="background: #25D366; border-color: #25D366; color: white;">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section section-padding">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Frequently Asked Questions</h2>
+                <p class="text-light">Common queries regarding Property and Revenue Law</p>
+            </div>
+
+            <div class="accordion" data-aos="fade-up">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Can you represent me in the Rajasthan High Court?
+                        <i class="fas fa-plus icon-plus"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Yes, we represent clients in the District Courts of Udaipur as well as the Rajasthan High Court (Jodhpur and Jaipur benches). We handle appeals, writs, and civil matters efficiently.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Do I need to be present in India for my property case?
+                        <i class="fas fa-plus icon-plus"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Not necessarily. For NRI clients, we can handle most proceedings via Power of Attorney (PoA). We ensure you are updated at every step without needing to travel frequently.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        What is the Ajmer Revenue Board and why does it matter?
+                        <i class="fas fa-plus icon-plus"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>The Board of Revenue in Ajmer is the highest court for agricultural land disputes in Rajasthan. Since we specialize in revenue law, our ability to represent you there is crucial for agricultural land matters.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Visit Our Office</h2>
+                <p>Located centrally in Madhuban, Udaipur</p>
+            </div>
+
+            <div class="contact-wrapper" data-aos="fade-up">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    
+                    <div class="info-row">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h5 class="text-gold">Office Address</h5>
+                            <p>8-B, Hazareshwar Mahadev Colony,<br>
+                            Near Court Chouraha, Madhuban,<br>
+                            Udaipur, Rajasthan 313004</p>
+                            
+                            <a href="https://www.google.com/maps/search/?api=1&query=8-B,+Hazareshwar+Mahadev+Colony,+Near+Court+Chouraha,+Madhuban,+Udaipur,+Rajasthan+313004" target="_blank" class="map-link">
+                                <i class="fas fa-external-link-alt" style="font-size: 0.9rem; margin-right: 5px;"></i> Locate on Google Maps
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <div class="info-row">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h5 class="text-gold">Phone</h5>
+                            <p><a href="tel:+919166866841" style="color: var(--white);">+91 9166866841</a></p>
+                        </div>
+                    </div>
+
+                    <div class="info-row">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h5 class="text-gold">Email</h5>
+                            <p><a href="mailto:sanjay.bohara1977@gmail.com" style="color: var(--white);">sanjay.bohara1977@gmail.com</a></p>
+                        </div>
+                    </div>
+
+                    <div class="info-row">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h5 class="text-gold">Working Hours</h5>
+                            <p>Mon - Sat: 9:00 AM - 8:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <iframe 
+                        class="map-frame"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3628.1408826721544!2d73.6856!3d24.5854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3967e5640716873f%3A0x651f630017571c4c!2sMadhuban%2C%20Udaipur%2C%20Rajasthan%20313001!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <i class="fas fa-balance-scale text-gold" style="font-size: 2rem; margin-bottom: 20px;"></i>
+                    <h4>Advocate Sampatlal & Sanjay Bohara</h4>
+                    <p style="margin-bottom: 20px;">Providing expert legal representation in Civil, Revenue, and Property law since 1969. Dedicated to justice and client satisfaction in Udaipur.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Practice Areas</h4>
+                    <ul>
+                        <li><a href="#services">Civil Litigation</a></li>
+                        <li><a href="#services">Property Disputes</a></li>
+                        <li><a href="#services">Revenue Board Appeals</a></li>
+                        <li><a href="#nri">NRI Legal Services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                     <ul>
+                        <li><i class="fas fa-map-marker-alt text-gold" style="margin-right: 10px;"></i> Madhuban, Udaipur</li>
+                        <li><i class="fas fa-phone text-gold" style="margin-right: 10px;"></i> +91 9166866841</li>
+                        <li><i class="fas fa-envelope text-gold" style="margin-right: 10px;"></i> sanjay.bohara1977@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© <span id="year"></span> Advocate Sampatlal & Sanjay Bohara. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Dynamic Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '70px';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'var(--white)';
+                navLinks.style.padding = '20px';
+                navLinks.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+                
+                // Color fix for mobile links
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.style.color = 'var(--primary)';
+                    link.style.display = 'block';
+                    link.style.padding = '10px 0';
+                });
+            }
+        });
+
+        // FAQ Accordion Logic
+        const accordions = document.querySelectorAll('.accordion-header');
+        accordions.forEach(acc => {
+            acc.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        });
+
+        // Scroll To Top Logic
+        const scrollTopBtn = document.querySelector('.scroll-top');
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        };
+
+        // Smooth Scroll for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                if (window.innerWidth <= 768) {
+                    navLinks.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
