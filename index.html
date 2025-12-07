@@ -7,19 +7,23 @@
     <title>Advocate Sampatlal & Sanjay Bohara | 55 Years of Legal Excellence | Udaipur</title>
     <meta name="description" content="Established 1969. Advocate Sampatlal & Sanjay Bohara are leading Civil, Revenue & Property Lawyers in Udaipur.">
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         /* --- CSS VARIABLES --- */
         :root {
-            --primary: #0f172a; /* Deep Navy */
-            --accent: #c29546;  /* Royal Gold */
+            /* Matches the dark navy from your uploaded image */
+            --primary: #0B1221; 
+            --secondary-blue: #1c2a3a;
+            /* Matches the gold text from your uploaded image */
+            --accent: #C5A059;  
             --accent-light: #e0b668;
             --white: #ffffff;
             --light-gray: #f8fafc;
             --text-main: #334155;
+            --text-light: #64748b;
             --whatsapp-green: #25D366;
             --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
@@ -35,7 +39,7 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 {
+        h1, h2, h3, h4, h5 {
             font-family: 'Playfair Display', serif;
             color: var(--primary);
             line-height: 1.3;
@@ -47,6 +51,13 @@
         .text-gold { color: var(--accent); }
         .text-center { text-align: center; }
 
+        /* --- SCROLL PROGRESS BAR --- */
+        .scroll-progress {
+            position: fixed; top: 0; left: 0; width: 0%; height: 4px;
+            background: var(--accent); z-index: 9999;
+            transition: width 0.1s;
+        }
+
         /* --- BUTTONS --- */
         .btn {
             display: inline-block;
@@ -54,13 +65,13 @@
             background: linear-gradient(45deg, var(--accent), var(--accent-light));
             color: var(--primary);
             font-weight: 700;
-            border-radius: 4px;
+            border-radius: 2px; /* Sharper corners for legal look */
             border: none;
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 0.9rem;
-            box-shadow: 0 4px 15px rgba(194, 149, 70, 0.4);
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
             transition: transform 0.3s ease;
         }
         .btn:hover { transform: translateY(-3px); color: var(--primary); }
@@ -72,380 +83,325 @@
             padding: 14px 33px;
             font-weight: 700;
             text-transform: uppercase;
-            border-radius: 4px;
+            border-radius: 2px;
         }
         .btn-outline:hover { background-color: var(--white); color: var(--primary); }
 
-        /* --- HEADER --- */
+        /* --- HEADER (Khaitan Style Clean) --- */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.98);
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: fixed;
             width: 100%;
             z-index: 1000;
             top: 0;
+            height: 80px;
+            display: flex;
+            align-items: center;
         }
         
-        .top-bar { background-color: var(--primary); color: var(--white); font-size: 0.85rem; padding: 10px 0; }
-        .top-bar-content { display: flex; justify-content: space-between; }
-        .top-bar a { color: var(--white); }
-        .top-bar a:hover { color: var(--accent); }
-
-        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
         
         .logo {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--primary);
             display: flex;
             align-items: center;
             font-family: 'Playfair Display', serif;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
         
-        .nav-links { display: flex; gap: 30px; list-style: none; }
-        .nav-links a { color: var(--primary); font-weight: 500; font-size: 0.95rem; position: relative; }
-        .nav-links a::after {
-            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
-            background-color: var(--accent); transition: width 0.3s;
+        /* Desktop Menu */
+        .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+        .nav-links a { 
+            color: var(--primary); font-weight: 500; font-size: 0.85rem; 
+            text-transform: uppercase; letter-spacing: 1px;
         }
-        .nav-links a:hover::after { width: 100%; }
-        .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); }
+        .nav-links a:hover { color: var(--accent); }
+        
+        /* Hamburger Icon */
+        .hamburger { 
+            font-size: 1.5rem; cursor: pointer; color: var(--primary); 
+            display: none; /* Hidden on desktop */
+        }
 
-        /* --- 3D HERO (PARALLAX) --- */
+        /* --- FULL SCREEN OVERLAY MENU (Image 6 Style) --- */
+        .overlay-menu {
+            height: 100%; width: 0; position: fixed; z-index: 2000;
+            top: 0; right: 0; background-color: #0d1b3e; /* Deep blue from image */
+            overflow-x: hidden; transition: 0.5s;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        .overlay-content {
+            position: relative; width: 100%; text-align: right; padding-right: 50px;
+        }
+        .overlay-menu a {
+            padding: 10px; text-decoration: none; font-size: 2.5rem;
+            color: #fff; display: block; transition: 0.3s;
+            font-family: 'Playfair Display', serif;
+        }
+        .overlay-menu a:hover, .overlay-menu a:focus { color: var(--accent); padding-right: 70px; }
+        .closebtn { position: absolute; top: 20px; right: 45px; font-size: 60px !important; }
+
+        /* --- HERO (Parallax) --- */
         .hero {
-            margin-top: 100px;
+            margin-top: 80px;
             position: relative;
-            height: 90vh;
+            height: 85vh;
             display: flex;
             align-items: center;
             overflow: hidden;
             background-color: var(--primary);
         }
-        
         .hero-bg {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 120%; /* Taller for parallax */
-            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.7)), 
+            position: absolute; top: 0; left: 0; width: 100%; height: 120%;
+            background: linear-gradient(rgba(11, 18, 33, 0.8), rgba(11, 18, 33, 0.7)), 
                         url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            z-index: 1;
-            transform: translateZ(-1px) scale(2); /* CSS Parallax Setup */
+            background-size: cover; background-position: center;
+            z-index: 1; transform: translateZ(-1px) scale(2);
         }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: var(--white);
-            width: 100%;
-        }
-
-        .hero-content h1 { font-size: 3.5rem; margin-bottom: 20px; color: var(--white); text-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        
+        .hero-content { position: relative; z-index: 2; text-align: center; color: var(--white); width: 100%; }
+        .hero-content h1 { font-size: 3.5rem; margin-bottom: 20px; color: var(--white); }
         .badge-experience {
-            background: rgba(194, 149, 70, 0.2);
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: inline-block;
-            margin-bottom: 20px;
-            backdrop-filter: blur(5px);
+            border: 1px solid var(--accent); color: var(--accent);
+            padding: 8px 20px; border-radius: 50px; font-size: 0.8rem;
+            font-weight: 600; text-transform: uppercase; letter-spacing: 2px;
+            display: inline-block; margin-bottom: 20px;
         }
 
-        /* --- ANIMATED STATS --- */
+        /* --- STATS BAR --- */
         .stats-bar {
-            background: linear-gradient(to right, #b89c6f, #d4af37);
+            background: var(--white);
             padding: 40px 0;
-            margin-top: -50px;
+            margin-top: -60px;
             position: relative;
             z-index: 10;
             box-shadow: var(--shadow);
-            border-radius: 8px;
+            border-radius: 4px;
             max-width: 1100px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-left: auto; margin-right: auto;
+            border-top: 4px solid var(--accent);
         }
         .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; color: var(--primary); }
         .stat-item h3 { font-size: 2.5rem; margin-bottom: 5px; font-weight: 800; }
+        .stat-item p { font-size: 0.8rem; letter-spacing: 1px; color: var(--text-light); }
 
-        /* --- 3D FOUNDERS SECTION --- */
+        /* --- LEGACY SECTION (IMAGE 1 REPLICA) --- */
+        #legacy { background-color: var(--white); padding: 120px 0; }
+        .legacy-content { max-width: 900px; margin: 0 auto; text-align: center; }
+        
+        .legacy-label {
+            color: var(--accent); font-weight: 700; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; display: block;
+        }
+        
+        .legacy-title {
+            font-size: 3.5rem; margin-bottom: 30px; color: var(--primary);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .legacy-desc {
+            font-size: 1.1rem; color: var(--text-light); margin-bottom: 50px;
+            line-height: 1.8; max-width: 800px; margin-left: auto; margin-right: auto;
+        }
+
+        /* Gold Separator Lines */
+        .separator-line {
+            height: 2px; background-color: #D4AF37; width: 100%;
+            margin: 40px 0; opacity: 0.6;
+        }
+
+        .legacy-quote {
+            font-family: 'Playfair Display', serif; font-style: italic;
+            font-size: 1.4rem; color: var(--text-main); line-height: 1.6;
+            padding: 0 40px;
+        }
+
+        .legacy-footer {
+            margin-top: 50px; font-size: 1rem; color: var(--text-light);
+        }
+        .legacy-footer strong { color: var(--primary); font-weight: 700; }
+
+        /* --- 3D FOUNDERS --- */
         #founders { background-color: var(--light-gray); }
-        .about-subtitle { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 10px; }
-        .section-header { text-align: center; margin-bottom: 60px; }
-        
-        .founders-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 50px;
-            margin-top: 50px;
-        }
-
+        .founders-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; margin-top: 50px; }
         .founder-card {
-            background: var(--white);
-            border-radius: 15px;
-            padding: 0;
-            box-shadow: var(--shadow);
-            transform-style: preserve-3d;
-            transform: perspective(1000px);
-            border-top: 5px solid var(--accent);
+            background: var(--white); border-radius: 4px; padding: 0;
+            box-shadow: var(--shadow); transform-style: preserve-3d;
+            transform: perspective(1000px); border-bottom: 5px solid var(--accent);
         }
-
-        .founder-header {
-            background: var(--primary);
-            padding: 30px 20px;
-            text-align: center;
-            color: white;
-        }
-
+        .founder-header { background: var(--primary); padding: 40px 20px; text-align: center; color: white; }
         .founder-img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--accent);
-            margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            background-color: #ddd; 
+            width: 180px; height: 180px; border-radius: 50%; object-fit: cover;
+            border: 4px solid var(--accent); margin-bottom: 20px;
         }
-
-        .founder-body { padding: 30px; }
-        .founder-card h3 { color: var(--white); margin-bottom: 5px; font-size: 1.6rem; }
-        .founder-card h4 { color: var(--accent); font-family: 'Montserrat', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
-        
-        .founder-bio {
-            color: var(--text-main);
-            font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-
-        .highlight-text {
-            background: rgba(194, 149, 70, 0.1);
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-weight: 600;
-            color: var(--primary);
-            display: inline-block;
-            margin-top: 10px;
-        }
+        .founder-body { padding: 40px; }
+        .founder-bio { text-align: justify; font-size: 0.95rem; color: var(--text-light); }
 
         /* --- 3D FLIP SERVICES --- */
         .services { background-color: var(--white); perspective: 1000px; }
         .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        
-        /* Flip Card Container */
-        .flip-card {
-            background-color: transparent;
-            height: 350px; /* Fixed height for flip effect */
-            perspective: 1000px;
-        }
-        
+        .flip-card { background-color: transparent; height: 350px; perspective: 1000px; }
         .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-            box-shadow: var(--shadow);
-            border-radius: 10px;
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.8s; transform-style: preserve-3d;
+            box-shadow: var(--shadow); border-radius: 4px;
         }
-        
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-        
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
         .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            border-radius: 10px;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            position: absolute; width: 100%; height: 100%;
+            backface-visibility: hidden; border-radius: 4px;
+            padding: 40px 20px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
         }
-        
-        .flip-card-front {
-            background-color: var(--white);
-            color: black;
-            border-bottom: 4px solid var(--accent);
-        }
-        
-        .flip-card-back {
-            background-color: var(--primary);
-            color: white;
-            transform: rotateY(180deg);
-            border-top: 4px solid var(--accent);
-        }
-        
-        .flip-card-back p { color: #ddd; font-size: 0.95rem; }
-        .flip-card-back h3 { color: var(--accent); margin-bottom: 15px; }
+        .flip-card-front { background-color: var(--white); color: black; border-top: 4px solid var(--accent); }
+        .flip-card-back { background-color: var(--primary); color: white; transform: rotateY(180deg); }
         .service-icon { font-size: 3rem; color: var(--accent); margin-bottom: 20px; }
 
-        /* --- TESTIMONIALS --- */
-        .testimonials { background-color: var(--primary); color: white; text-align: center; }
-        .testimonial-slider {
-            display: flex;
-            overflow-x: auto;
-            gap: 30px;
-            padding: 20px;
-            scroll-snap-type: x mandatory;
+        /* --- NEW INSIGHTS SECTION --- */
+        .insights { background-color: var(--light-gray); }
+        .insight-card {
+            background: white; padding: 30px; border-radius: 4px;
+            box-shadow: var(--shadow); transition: 0.3s;
         }
-        .testimonial-card {
-            min-width: 300px;
-            background: rgba(255,255,255,0.05);
-            padding: 30px;
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.1);
-            scroll-snap-align: center;
-        }
-        .stars { color: var(--accent); margin-bottom: 15px; }
+        .insight-card:hover { transform: translateY(-5px); }
+        .insight-date { font-size: 0.8rem; color: var(--accent); text-transform: uppercase; font-weight: 700; }
+        .insight-title { font-size: 1.2rem; margin: 10px 0; }
+        .read-more { color: var(--primary); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; }
 
-        /* --- CONTACT & MAP LINK --- */
-        .contact-wrapper {
-            display: grid; grid-template-columns: 1fr 1.5fr;
-            box-shadow: var(--shadow); background: var(--white);
-            border-radius: 10px; overflow: hidden;
+        /* --- CONTACT (IMAGE 4 REPLICA) --- */
+        #contact { background-color: var(--primary); padding: 100px 0; color: white; }
+        .contact-header h2 { color: white; font-size: 3rem; margin-bottom: 60px; }
+        
+        .contact-grid-layout {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
         }
-        .contact-info { padding: 50px; background: var(--primary); color: var(--white); }
-        .info-row { display: flex; margin-bottom: 30px; align-items: flex-start; }
-        .info-row i { font-size: 1.5rem; color: var(--accent); margin-right: 20px; margin-top: 5px; }
-        .info-row a { color: var(--white); text-decoration: underline; text-decoration-color: var(--accent); }
-        .info-row a:hover { color: var(--accent); }
 
-        /* Map Container that is Clickable */
+        .contact-item { margin-bottom: 40px; display: flex; align-items: flex-start; }
+        .contact-icon { color: var(--accent); font-size: 1.5rem; margin-right: 25px; margin-top: 5px; }
+        .contact-label { color: var(--accent); font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; display: block; }
+        .contact-text { font-size: 1.1rem; color: #cbd5e1; line-height: 1.6; }
+        .contact-text a { color: #cbd5e1; border-bottom: 1px solid rgba(255,255,255,0.2); }
+        .contact-text a:hover { color: var(--accent); border-color: var(--accent); }
+
         .map-container-link {
-            display: block;
-            width: 100%;
-            height: 100%;
-            min-height: 500px;
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
+            width: 100%; height: 100%; min-height: 400px;
+            border-radius: 4px; overflow: hidden; position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        .map-frame { width: 100%; height: 100%; border: 0; pointer-events: none; } /* Disable pointer on iframe so container click works */
-        .click-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.1); transition: 0.3s;
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0;
-        }
-        .map-container-link:hover .click-overlay { opacity: 1; background: rgba(0,0,0,0.4); }
-        .click-overlay span {
-            background: var(--accent); color: var(--primary); padding: 10px 20px;
-            border-radius: 5px; font-weight: bold; transform: translateY(20px); transition: 0.3s;
-        }
-        .map-container-link:hover .click-overlay span { transform: translateY(0); }
+        .map-frame { width: 100%; height: 100%; border: 0; pointer-events: none; }
 
+        /* --- FOOTER --- */
+        footer { background-color: #080c16; color: #94a3b8; padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-list { list-style: none; }
+        .footer-list li { margin-bottom: 15px; }
+        .footer-list a { font-size: 1.1rem; color: #cbd5e1; }
+        .footer-list a:hover { color: var(--accent); padding-left: 10px; }
 
-        /* --- FOOTER & FLOATING --- */
-        footer { background-color: #0b1120; color: #94a3b8; padding: 70px 0 30px; }
+        /* --- FLOATING & MODAL --- */
         .floating-wa {
             position: fixed; bottom: 30px; right: 30px;
             background-color: var(--whatsapp-green); color: white;
             width: 60px; height: 60px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 2000;
-            animation: pulse 2s infinite;
         }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
-
-        /* --- BOOKING MODAL (POPUP) --- */
+        
         .modal {
             display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
+            background-color: rgba(0,0,0,0.9); backdrop-filter: blur(5px);
             align-items: center; justify-content: center;
         }
         .modal-content {
-            background-color: var(--white); margin: auto; padding: 40px; border-radius: 10px;
+            background-color: var(--white); padding: 50px; border-radius: 4px;
             width: 90%; max-width: 500px; position: relative; animation: slideDown 0.4s;
         }
         @keyframes slideDown { from {transform: translateY(-50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
-        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #aaa; }
-        .close-modal:hover { color: var(--accent); }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; }
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; }
-        
+        .form-group input, .form-group textarea { width: 100%; padding: 15px; border: 1px solid #ddd; background: #f9f9f9; }
+
         /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links { display: none; } 
-            .hamburger { display: block; }
+        @media (max-width: 992px) {
+            .nav-links { display: none; }
+            .hamburger { display: block; margin-left: auto; }
             .hero-content h1 { font-size: 2.5rem; }
-            .stats-bar { width: 90%; margin-top: 20px; }
+            .contact-grid-layout { grid-template-columns: 1fr; }
             .stats-grid { grid-template-columns: 1fr 1fr; }
-            .founders-grid { grid-template-columns: 1fr; }
-            .contact-wrapper { grid-template-columns: 1fr; }
+            .legacy-title { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <a href="https://wa.me/919166866841" class="floating-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <div id="myNav" class="overlay-menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <a href="#home" onclick="closeNav()">Home</a>
+            <a href="#legacy" onclick="closeNav()">The Firm</a>
+            <a href="#founders" onclick="closeNav()">Leadership</a>
+            <a href="#services" onclick="closeNav()">Expertise</a>
+            <a href="#insights" onclick="closeNav()">Insights</a>
+            <a href="#contact" onclick="closeNav()">Contact Us</a>
+        </div>
+    </div>
 
     <div id="bookingModal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <h3 class="text-center" style="margin-bottom: 20px;">Book Legal Consultation</h3>
+            <span class="close-modal" onclick="closeModal()">×</span>
+            <h3 class="text-center" style="margin-bottom: 30px;">Request Consultation</h3>
             <form>
                 <div class="form-group">
-                    <label>Your Name</label>
-                    <input type="text" placeholder="Enter full name">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="John Doe">
                 </div>
                 <div class="form-group">
                     <label>Phone Number</label>
                     <input type="tel" placeholder="+91...">
                 </div>
                 <div class="form-group">
-                    <label>Case Details</label>
-                    <textarea rows="3" placeholder="Briefly describe your issue"></textarea>
+                    <label>Brief Matter</label>
+                    <textarea rows="3" placeholder="Property / Civil / Revenue..."></textarea>
                 </div>
-                <button type="button" class="btn" style="width: 100%;" onclick="alert('Thank you! We will call you shortly.')">Submit Request</button>
+                <button type="button" class="btn" style="width: 100%;" onclick="alert('Request sent. We will contact you.')">Submit</button>
             </form>
         </div>
     </div>
 
     <header>
-        <div class="top-bar">
-            <div class="container top-bar-content">
-                <span>Established 1969</span>
-                <a href="tel:+919166866841"><i class="fas fa-phone-alt"></i> +91 9166866841</a>
-            </div>
-        </div>
         <div class="container nav-container">
             <a href="#" class="logo">
-                <i class="fas fa-balance-scale text-gold" style="margin-right: 15px;"></i>
-                Adv. Bohara & Associates
+                BOHARA & ASSOCIATES
             </a>
+            
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#founders">Founders</a></li>
-                <li><a href="#services">Practice Areas</a></li>
-                <li><a href="#" class="btn" onclick="openModal()" style="padding: 10px 25px; color: var(--primary);">Book Appointment</a></li>
+                <li><a href="#legacy">The Firm</a></li>
+                <li><a href="#services">Expertise</a></li>
+                <li><a href="#founders">People</a></li>
+                <li><a href="#insights">Insights</a></li>
+                <li><a href="#contact" class="btn" onclick="openModal()" style="padding: 10px 25px; color: var(--primary);">Contact</a></li>
             </ul>
-            <i class="fas fa-bars hamburger"></i>
+
+            <div class="hamburger" onclick="openNav()">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </header>
 
     <section id="home" class="hero">
-        <div class="hero-bg"></div> <div class="container hero-content" data-aos="fade-up">
-            <span class="badge-experience">55 Years of Excellence</span>
-            <h1>Trust, Integrity, and <br> Legal Mastery in Udaipur</h1>
-            <p style="margin-bottom: 30px;">Representing clients across the Rajasthan High Court & Revenue Board with a legacy of winning.</p>
-            <a href="#" onclick="openModal()" class="btn">Get Legal Help</a>
-            <a href="#founders" class="btn-outline" style="margin-left: 15px;">Meet The Founders</a>
+        <div class="hero-bg"></div>
+        <div class="container hero-content" data-aos="fade-up">
+            <span class="badge-experience">ESTABLISHED 1969</span>
+            <h1>A Tradition of Excellence <br> & Legal Mastery</h1>
+            <p style="margin-bottom: 40px; opacity: 0.9;">Udaipur's premier counsel for High Court & Revenue Board matters.</p>
+            <a href="#" onclick="openModal()" class="btn">Consult With Us</a>
         </div>
     </section>
 
@@ -453,54 +409,68 @@
         <div class="stats-bar">
             <div class="stats-grid">
                 <div class="stat-item"><h3>1969</h3><p>ESTABLISHED</p></div>
-                <div class="stat-item"><h3 class="counter" data-target="10000">0</h3><p>CASES SOLVED</p></div>
-                <div class="stat-item"><h3 class="counter" data-target="55">0</h3><p>YEARS EXP.</p></div>
-                <div class="stat-item"><h3>High Court</h3><p>PRACTICE</p></div>
+                <div class="stat-item"><h3 class="counter" data-target="10000">0</h3><p>CASES RESOLVED</p></div>
+                <div class="stat-item"><h3 class="counter" data-target="55">0</h3><p>YEARS LEGACY</p></div>
+                <div class="stat-item"><h3>High Court</h3><p>JURISDICTION</p></div>
             </div>
         </div>
     </div>
 
+    <section id="legacy">
+        <div class="container legacy-content" data-aos="fade-up">
+            <span class="legacy-label">THE FIRM</span>
+            <h2 class="legacy-title">A Legacy of Justice in Rajasthan</h2>
+            
+            <p class="legacy-desc">
+                Advocate Sampatlal & Sanjay Bohara have been pillars of the legal community in Udaipur for over five decades. Our firm is known for its integrity, and we are proud of the relationships we have built over decades of service in Udaipur.
+            </p>
+
+            <div class="separator-line"></div>
+
+            <blockquote class="legacy-quote">
+                "Our experience in the field is strengthened by our loyalty to clients and commitment to upholding the law. We work closely with each client, understanding their needs and crafting a legal strategy that aligns with their goals."
+            </blockquote>
+
+            <div class="separator-line"></div>
+
+            <p class="legacy-footer">
+                We possess deep expertise in the workings of the <strong>Rajasthan High Court</strong> and the <strong>Ajmer Revenue Board</strong>, ensuring that whether you are a local resident or an NRI, your property and civil rights are vigorously defended.
+            </p>
+        </div>
+    </section>
+
     <section id="founders" class="section-padding">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="about-subtitle">Leadership</span>
-                <h2>The Legal Visionaries</h2>
-                <p>Generations of legal expertise dedicated to your justice.</p>
+            <div class="text-center" style="margin-bottom: 60px;">
+                <span class="legacy-label">LEADERSHIP</span>
+                <h2>Partners & Counsel</h2>
             </div>
 
             <div class="founders-grid">
                 
-                <div class="founder-card" data-tilt data-tilt-glare data-tilt-max-glare="0.5">
+                <div class="founder-card" data-tilt data-tilt-glare data-tilt-max-glare="0.3">
                     <div class="founder-header">
                         <img src="founder1.jpg" alt="Advocate Sampat Lal Bohara" class="founder-img" onerror="this.src='https://via.placeholder.com/150'">
                         <h3>Mr. Sampat Lal Ji Bohara</h3>
-                        <h4>Founder & Senior Counsel</h4>
+                        <p style="color: var(--accent); font-size: 0.9rem; text-transform: uppercase;">Founder & Senior Counsel</p>
                     </div>
                     <div class="founder-body">
                         <p class="founder-bio">
-                            A Titan in the legal fraternity of Rajasthan, <strong>Mr. Sampat Lal Ji Bohara</strong> began his practice in 1969. Over 55 illustrious years, he has successfully resolved lakhs of complex civil and revenue disputes.
+                            A Titan in the legal fraternity of Rajasthan, <strong>Mr. Sampat Lal Ji Bohara</strong> began his practice in 1969. Known for his eidetic memory of case law and compassionate approach, he is a mentor to dozens of advocates in Udaipur.
                         </p>
-                        <p class="founder-bio">
-                            Known for his eidetic memory of case law and compassionate approach, he is not just a lawyer but a mentor to dozens of advocates in Udaipur. His name is synonymous with integrity and victory in the District Courts.
-                        </p>
-                        <div class="highlight-text"><i class="fas fa-star text-gold"></i> 55+ Years Experience</div>
                     </div>
                 </div>
 
-                <div class="founder-card" data-tilt data-tilt-glare data-tilt-max-glare="0.5">
+                <div class="founder-card" data-tilt data-tilt-glare data-tilt-max-glare="0.3">
                     <div class="founder-header">
                         <img src="founder2.jpg" alt="Advocate Sanjay Bohara" class="founder-img" onerror="this.src='https://via.placeholder.com/150'">
                         <h3>Mr. Sanjay Bohara</h3>
-                        <h4>Co-Founder & Advocate</h4>
+                        <p style="color: var(--accent); font-size: 0.9rem; text-transform: uppercase;">Co-Founder & Partner</p>
                     </div>
                     <div class="founder-body">
                         <p class="founder-bio">
-                            Bringing modern legal dynamism to the firm, <strong>Mr. Sanjay Bohara</strong> has been practicing since 2002. A <strong>Gold Medalist</strong> in his LLB and holding a Master's (LLM), he combines academic brilliance with courtroom aggression.
+                            Practicing since 2002, <strong>Mr. Sanjay Bohara</strong> combines academic brilliance (LLM Gold Medalist) with courtroom aggression. As a former President of the Law College, he specializes in high-stakes Revenue Board matters.
                         </p>
-                        <p class="founder-bio">
-                            As a former <strong>President of the Law College</strong>, he has deep connections in the judiciary and administration. He specializes in high-stakes High Court appeals and complex Revenue Board matters.
-                        </p>
-                        <div class="highlight-text"><i class="fas fa-university text-gold"></i> Gold Medalist & LLM</div>
                     </div>
                 </div>
 
@@ -510,10 +480,9 @@
 
     <section id="services" class="section-padding">
         <div class="container">
-            <div class="section-header">
-                <span class="about-subtitle">Expertise</span>
-                <h2>Our Practice Areas</h2>
-                <p>Hover over the cards to see details.</p>
+            <div class="text-center" style="margin-bottom: 60px;">
+                <span class="legacy-label">EXPERTISE</span>
+                <h2>Areas of Practice</h2>
             </div>
             <div class="service-grid">
                 
@@ -522,11 +491,10 @@
                         <div class="flip-card-front">
                             <i class="fas fa-gavel service-icon"></i>
                             <h3>Civil Litigation</h3>
-                            <p>Expert handling of civil suits & disputes.</p>
                         </div>
                         <div class="flip-card-back">
                             <h3>Civil Litigation</h3>
-                            <p>We handle Recovery Suits, Injunctions, Specific Performance of Contracts, and complex civil appeals in the High Court.</p>
+                            <p>Recovery Suits, Injunctions, Specific Performance, and High Court Appeals.</p>
                         </div>
                     </div>
                 </div>
@@ -534,13 +502,12 @@
                 <div class="flip-card">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <i class="fas fa-file-contract service-icon"></i>
+                            <i class="fas fa-landmark service-icon"></i>
                             <h3>Revenue Board</h3>
-                            <p>Agricultural land & Khatedari rights.</p>
                         </div>
                         <div class="flip-card-back">
                             <h3>Revenue Board</h3>
-                            <p>Specialized representation at the Ajmer Revenue Board for mutation, land conversion, and tenancy act disputes.</p>
+                            <p>Agricultural land disputes, Khatedari rights, and mutation at Ajmer Board.</p>
                         </div>
                     </div>
                 </div>
@@ -548,13 +515,12 @@
                 <div class="flip-card">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <i class="fas fa-plane service-icon"></i>
+                            <i class="fas fa-globe service-icon"></i>
                             <h3>NRI Services</h3>
-                            <p>Property protection for global clients.</p>
                         </div>
                         <div class="flip-card-back">
                             <h3>NRI Services</h3>
-                            <p>We protect your Indian assets while you are abroad. Remote handling via Power of Attorney and video updates.</p>
+                            <p>Remote property protection and dispute resolution for global clients.</p>
                         </div>
                     </div>
                 </div>
@@ -563,60 +529,125 @@
         </div>
     </section>
 
-    <section class="testimonials section-padding">
+    <section id="insights" class="insights section-padding">
         <div class="container">
-            <h2 style="color: white; margin-bottom: 40px;">Client Success Stories</h2>
-            <div class="testimonial-slider">
-                <div class="testimonial-card">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p>"Mr. Sanjay Bohara saved our ancestral property from illegal possession. His knowledge of revenue law is unmatched."</p>
-                    <h5 style="margin-top: 15px; color: var(--accent);">- Rajesh M., NRI Client</h5>
+            <div class="text-center" style="margin-bottom: 60px;">
+                <span class="legacy-label">THOUGHT LEADERSHIP</span>
+                <h2>Legal Insights & News</h2>
+            </div>
+            <div class="service-grid">
+                <div class="insight-card">
+                    <div class="insight-date">NOV 2024</div>
+                    <h3 class="insight-title">Understanding Revenue Laws in Rajasthan</h3>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">A guide to Khatedari rights and land conversion processes.</p>
+                    <a href="#" class="read-more">Read Article →</a>
                 </div>
-                <div class="testimonial-card">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p>"Sampat Lal Ji is a legend in Udaipur. His guidance helped us win a 20-year-old civil dispute."</p>
-                    <h5 style="margin-top: 15px; color: var(--accent);">- Sharma Family</h5>
+                <div class="insight-card">
+                    <div class="insight-date">OCT 2024</div>
+                    <h3 class="insight-title">Property Rights for NRIs</h3>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">How to protect your ancestral property while living abroad.</p>
+                    <a href="#" class="read-more">Read Article →</a>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-date">SEP 2024</div>
+                    <h3 class="insight-title">Recent High Court Judgments</h3>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">Analysis of recent verdicts affecting tenancy laws.</p>
+                    <a href="#" class="read-more">Read Article →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section-padding">
+    <section id="contact">
         <div class="container">
-            <div class="contact-wrapper">
-                <div class="contact-info">
-                    <h3 style="color: white; margin-bottom: 30px;">Visit Our Office</h3>
-                    <div class="info-row">
-                        <i class="fas fa-map-marker-alt"></i>
+            <div class="contact-header">
+                <h2>Visit Our Office</h2>
+            </div>
+
+            <div class="contact-grid-layout">
+                <div style="padding-right: 30px;">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
                         <div>
-                            <h5 class="text-gold">Address</h5>
-                            <p>8-B, Hazareshwar Mahadev Colony,<br>Madhuban, Udaipur, Rajasthan</p>
-                            <a href="https://www.google.com/maps/place/Advocate+Sampatlal+%26+Sanjay+Bohara,+8-B,+hazareshwar+mahadev+colony,+Near+Court+Chouraha,+Madhuban,+Udaipur,+Rajasthan+313001/data=!4m2!3m1!1s0x3967e52aa0659365:0x3905f103645efb30?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESCjExLjE1Mi4xMDAYACDXggMqdSw5NDI0MjU2OCw5NDIyMzI5OSw5NDIxNjQxMyw5NDIxMjQ5Niw5NDIwNzM5NCw5NDIwNzUwNiw5NDIwODUwNiw5NDIxNzUyMyw5NDIxODY1Myw5NDIyOTgzOSw0NzA4NzExOCw0NzA4NDM5Myw5NDIxMzIwMEICSU4%3D" target="_blank" style="font-size: 0.85rem;">OPEN IN GOOGLE MAPS →</a>
+                            <span class="contact-label">Address</span>
+                            <p class="contact-text">
+                                8-B, Hazareshwar Mahadev Colony,<br>
+                                Madhuban, Udaipur, Rajasthan 313004<br>
+                                <a href="https://www.google.com/maps/place/Advocate+Sampatlal+%26+Sanjay+Bohara,+8-B,+hazareshwar+mahadev+colony,+Near+Court+Chouraha,+Madhuban,+Udaipur,+Rajasthan+313001/data=!4m2!3m1!1s0x3967e52aa0659365:0x3905f103645efb30?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESCjExLjE1Mi4xMDAYACDXggMqdSw5NDI0MjU2OCw5NDIyMzI5OSw5NDIxNjQxMyw5NDIxMjQ5Niw5NDIwNzM5NCw5NDIwNzUwNiw5NDIwODUwNiw5NDIxNzUyMyw5NDIxODY1Myw5NDIyOTgzOSw0NzA4NzExOCw0NzA4NDM5Myw5NDIxMzIwMEICSU4%3D" target="_blank" style="font-size: 0.9rem; text-transform: uppercase;">Get Directions</a>
+                            </p>
                         </div>
                     </div>
-                    <div class="info-row">
-                        <i class="fas fa-phone"></i>
-                        <div><h5 class="text-gold">Phone</h5><a href="tel:+919166866841">+91 9166866841</a></div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt contact-icon"></i>
+                        <div>
+                            <span class="contact-label">Phone</span>
+                            <p class="contact-text">
+                                <a href="tel:+919166866841">+91 9166866841</a>
+                            </p>
+                        </div>
                     </div>
-                    <div class="info-row">
-                        <i class="fas fa-envelope"></i>
-                        <div><h5 class="text-gold">Email</h5><a href="mailto:sanjay.bohara1977@gmail.com">sanjay.bohara1977@gmail.com</a></div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <div>
+                            <span class="contact-label">Email</span>
+                            <p class="contact-text">
+                                <a href="mailto:sanjay.bohara1977@gmail.com">sanjay.bohara1977@gmail.com</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
-                
-                <a href="https://www.google.com/maps/place/Advocate+Sampatlal+%26+Sanjay+Bohara,+8-B,+hazareshwar+mahadev+colony,+Near+Court+Chouraha,+Madhuban,+Udaipur,+Rajasthan+313001/data=!4m2!3m1!1s0x3967e52aa0659365:0x3905f103645efb30?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESCjExLjE1Mi4xMDAYACDXggMqdSw5NDI0MjU2OCw5NDIyMzI5OSw5NDIxNjQxMyw5NDIxMjQ5Niw5NDIwNzM5NCw5NDIwNzUwNiw5NDIwODUwNiw5NDIxNzUyMyw5NDIxODY1Myw5NDIyOTgzOSw0NzA4NzExOCw0NzA4NDM5Myw5NDIxMzIwMEICSU4%3D" target="_blank" class="map-container-link" title="Click to View on Google Maps">
-                    <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3626.8!2d73.714!3d24.585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3967e5a5a5a5a5a%3A0x5a5a5a5a5a5a5a!2s8-B%2C%20Hazareshwar%20Mahadev%20Colony%2C%20Near%20Court%20Chouraha%2C%20Madhuban%2C%20Udaipur%2C%20Rajasthan%20313004!5e0!3m2!1sen!2sin!4v1634567890123!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
-                    <div class="click-overlay">
-                        <span><i class="fas fa-location-arrow"></i> Click to Open Navigation</span>
-                    </div>
-                </a>
+
+                <div>
+                    <a href="https://www.google.com/maps/place/Advocate+Sampatlal+%26+Sanjay+Bohara,+8-B,+hazareshwar+mahadev+colony,+Near+Court+Chouraha,+Madhuban,+Udaipur,+Rajasthan+313001/data=!4m2!3m1!1s0x3967e52aa0659365:0x3905f103645efb30?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESCjExLjE1Mi4xMDAYACDXggMqdSw5NDI0MjU2OCw5NDIyMzI5OSw5NDIxNjQxMyw5NDIxMjQ5Niw5NDIwNzM5NCw5NDIwNzUwNiw5NDIwODUwNiw5NDIxNzUyMyw5NDIxODY1Myw5NDIyOTgzOSw0NzA4NzExOCw0NzA4NDM5Myw5NDIxMzIwMEICSU4%3D" target="_blank" class="map-container-link" style="display:block;">
+                        <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3626.8!2d73.714!3d24.585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3967e5a5a5a5a5a%3A0x5a5a5a5a5a5a5a!2s8-B%2C%20Hazareshwar%20Mahadev%20Colony%2C%20Near%20Court%20Chouraha%2C%20Madhuban%2C%20Udaipur%2C%20Rajasthan%20313004!5e0!3m2!1sen!2sin!4v1634567890123!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="container" style="text-align: center;">
-            <p>© 2025 Advocate Bohara & Associates. All Rights Reserved.</p>
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px;">
+                <div>
+                    <h4 style="color: white; margin-bottom: 20px;">Expertise</h4>
+                    <ul class="footer-list">
+                        <li><a href="#">Civil Litigation</a></li>
+                        <li><a href="#">Revenue Board</a></li>
+                        <li><a href="#">Property Disputes</a></li>
+                        <li><a href="#">NRI Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: white; margin-bottom: 20px;">People</h4>
+                    <ul class="footer-list">
+                        <li><a href="#founders">Partners</a></li>
+                        <li><a href="#founders">Associates</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: white; margin-bottom: 20px;">Legacy</h4>
+                    <ul class="footer-list">
+                        <li><a href="#legacy">History</a></li>
+                        <li><a href="#">Alumni</a></li>
+                        <li><a href="#">Values</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: white; margin-bottom: 20px;">Connect</h4>
+                    <ul class="footer-list">
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 50px; padding-top: 30px; text-align: center; font-size: 0.9rem;">
+                © 2025 Advocate Bohara & Associates. All Rights Reserved.
+            </div>
         </div>
     </footer>
 
@@ -624,53 +655,42 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     
     <script>
-        AOS.init({ duration: 800, once: true });
+        AOS.init({ duration: 1000, once: true });
         
         // Tilt Effect
         VanillaTilt.init(document.querySelectorAll(".founder-card"), {
-            max: 15, speed: 400, glare: true, "max-glare": 0.2,
+            max: 10, speed: 400, glare: true, "max-glare": 0.2,
         });
+
+        // Overlay Menu Logic
+        function openNav() { document.getElementById("myNav").style.width = "100%"; }
+        function closeNav() { document.getElementById("myNav").style.width = "0%"; }
 
         // Modal Logic
         function openModal() { document.getElementById('bookingModal').style.display = 'flex'; }
         function closeModal() { document.getElementById('bookingModal').style.display = 'none'; }
         
-        // Counter Animation
-        const counters = document.querySelectorAll('.counter');
-        const speed = 200;
-        counters.forEach(counter => {
-            const updateCount = () => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                const inc = target / speed;
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(updateCount, 20);
-                } else {
-                    counter.innerText = target + "+";
-                }
-            };
-            // Trigger animation when scrolled into view (Simple Intersection Observer)
-            let observer = new IntersectionObserver((entries) => {
-                if(entries[0].isIntersecting){ updateCount(); observer.disconnect(); }
-            });
-            observer.observe(counter);
-        });
-
-        // Mobile Menu
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        hamburger.addEventListener('click', () => {
-            navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '60px';
-            navLinks.style.left = '0';
-            navLinks.style.width = '100%';
-            navLinks.style.background = 'white';
-            navLinks.style.padding = '20px';
-            navLinks.style.boxShadow = '0 5px 10px rgba(0,0,0,0.1)';
-        });
+        // Scroll Progress Bar
+        window.onscroll = function() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("scrollProgress").style.width = scrolled + "%";
+            
+            // Counter Logic
+            if(document.querySelector('.stats-bar').getBoundingClientRect().top < window.innerHeight) {
+                 const counters = document.querySelectorAll('.counter');
+                 counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const c = +counter.innerText;
+                    const increment = target / 200;
+                    if(c < target) {
+                        counter.innerText = Math.ceil(c + increment);
+                        setTimeout(arguments.callee, 1);
+                    } else { counter.innerText = target + "+"; }
+                 });
+            }
+        };
     </script>
 </body>
 </html>
