@@ -13,13 +13,12 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-        /* --- CSS VARIABLES (RICHER PALETTE) --- */
+        /* --- CSS VARIABLES (LUXURY PALETTE) --- */
         :root {
             --primary: #02060d;  /* Deepest Navy/Black */
             --secondary: #0f172a;
             --accent: #C5A059;   /* Luxury Gold */
             --accent-light: #d4af37;
-            --accent-glow: #e6c885;
             --white: #ffffff;
             --light-gray: #f4f4f4;
             --text-main: #334155;
@@ -46,6 +45,7 @@
         /* --- UTILITIES --- */
         .text-gold { color: var(--accent); }
         .bg-dark { background: var(--primary); color: white; }
+        .bg-light { background: var(--light-gray); }
         .section-padding { padding: 120px 0; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
         .text-center { text-align: center; }
@@ -65,7 +65,7 @@
             background: var(--gradient-gold); z-index: 9999;
         }
 
-        /* --- BUTTONS (PREMIUM LOOK) --- */
+        /* --- BUTTONS --- */
         .btn {
             display: inline-flex; align-items: center; justify-content: center;
             padding: 18px 40px;
@@ -102,22 +102,19 @@
         }
         .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
         
-        /* Updated Logo Structure for Long Name */
-        .logo {
-            text-decoration: none; display: flex; align-items: center;
-        }
+        .logo { text-decoration: none; display: flex; align-items: center; }
         .logo-icon { font-size: 2.2rem; color: var(--accent); margin-right: 15px; }
         .logo-text-group { display: flex; flex-direction: column; justify-content: center; }
         .logo-main {
             font-family: 'Playfair Display', serif; font-weight: 700; color: var(--primary);
-            font-size: 1.3rem; line-height: 1.2; text-transform: uppercase; letter-spacing: 1px;
+            font-size: 1.2rem; line-height: 1.2; text-transform: uppercase; letter-spacing: 1px;
         }
         .logo-sub {
             font-family: 'Montserrat', sans-serif; font-size: 0.7rem; 
             color: var(--accent); letter-spacing: 3px; text-transform: uppercase; font-weight: 600;
         }
 
-        .nav-links { display: flex; gap: 35px; list-style: none; align-items: center; }
+        .nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
         .nav-links a { 
             color: var(--primary); font-weight: 600; font-size: 0.85rem; 
             text-transform: uppercase; letter-spacing: 1px; text-decoration: none; position: relative;
@@ -129,7 +126,7 @@
         }
         .nav-links a:hover::after { width: 100%; }
 
-        /* --- HERO SECTION (IMPROVED VISIBILITY) --- */
+        /* --- HERO SECTION --- */
         .hero {
             min-height: 100vh; position: relative; display: flex; align-items: center;
             background-color: var(--primary); overflow: hidden;
@@ -137,7 +134,6 @@
         }
         .hero-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            /* Darker, richer gradient overlay for better text contrast */
             background: radial-gradient(circle at center, rgba(11, 18, 33, 0.6), #02060d),
                         url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=1920&q=80');
             background-size: cover; background-position: center;
@@ -177,24 +173,16 @@
             color: rgba(255,255,255,0.9); font-size: 1.3rem; margin-bottom: 50px; max-width: 650px; font-weight: 300;
         }
         
-        /* Aligned buttons */
         .hero-btns { display: flex; gap: 25px; align-items: center; flex-wrap: wrap; }
 
-        /* Premium 3D Glass Card */
         .hero-card-3d {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(197, 160, 89, 0.3); /* Gold border */
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(197, 160, 89, 0.3);
             padding: 50px; border-radius: 15px; color: white;
             box-shadow: var(--shadow-3d), inset 0 0 20px rgba(197, 160, 89, 0.1);
             transform-style: preserve-3d; position: relative; overflow: hidden;
         }
-        .hero-card-3d::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(197, 160, 89, 0.2), transparent 50%);
-            opacity: 0; transition: opacity 0.5s; pointer-events: none;
-        }
-        .hero-card-3d:hover::before { opacity: 1; }
 
         /* --- STATS --- */
         .stats-bar {
@@ -206,18 +194,25 @@
         .stat-item h3 { font-size: 3rem; color: var(--primary); font-weight: 800; margin-bottom: 5px; }
         .stat-item p { color: var(--accent); font-size: 0.9rem; letter-spacing: 2px; font-weight: 700; }
 
+        /* --- NEW FEATURE: WHY CHOOSE US GRID --- */
+        .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .value-card {
+            background: white; padding: 40px; border-radius: 8px; box-shadow: var(--shadow-soft);
+            transition: 0.3s; text-align: center; border: 1px solid #eee;
+        }
+        .value-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: var(--shadow-3d); }
+        .value-icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; }
+        .value-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 15px; color: var(--primary); }
+
         /* --- LEGACY --- */
-        #legacy { background: white; }
-        .legacy-content { max-width: 900px; margin: 0 auto; text-align: center; }
-        .legacy-text { font-size: 1.2rem; line-height: 1.9; color: var(--text-main); }
         .legacy-quote {
             font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--primary);
-            margin: 50px 0; font-style: italic; position: relative; padding: 0 40px;
+            margin: 50px 0; font-style: italic; position: relative; padding: 0 40px; text-align: center;
         }
         .legacy-quote i { color: var(--accent); font-size: 1.5rem; opacity: 0.5; position: absolute; }
         .fa-quote-left { top: -20px; left: 0; } .fa-quote-right { bottom: -20px; right: 0; }
 
-        /* --- FOUNDERS (PREMIUM CARDS) --- */
+        /* --- FOUNDERS --- */
         .founders-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 50px; }
         .founder-card {
             background: white; border-radius: 12px; overflow: hidden;
@@ -227,44 +222,18 @@
         .founder-card:hover { box-shadow: var(--shadow-3d); transform: translateY(-10px); }
         .founder-header { 
             background: linear-gradient(to right, var(--primary), var(--secondary)); padding: 60px 30px; text-align: center; color: white; 
-            position: relative;
         }
         .founder-img {
             width: 180px; height: 180px; border-radius: 50%; object-fit: cover;
             border: 5px solid var(--accent); margin-bottom: 25px; background: #ddd;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-        }
-        .founder-body { padding: 50px 40px; text-align: justify; }
-        .founder-role { color: var(--accent); font-size: 0.9rem; letter-spacing: 2px; font-weight: 700; margin-top: 10px; display: block; }
-
-        /* --- PROCESS TIMELINE --- */
-        .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
-        .process-card {
-            background: var(--primary); color: white; padding: 40px 30px; border-radius: 12px;
-            position: relative; overflow: hidden; box-shadow: var(--shadow-soft);
-            border-bottom: 3px solid var(--accent); transition: 0.4s;
-        }
-        .process-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-3d); }
-        .process-num { 
-            font-size: 6rem; font-weight: 900; color: rgba(255,255,255,0.03); 
-            position: absolute; top: -30px; right: -20px; z-index: 0;
-        }
-        .process-content { position: relative; z-index: 1; }
-        .process-icon-box {
-            width: 70px; height: 70px; background: rgba(197, 160, 89, 0.2); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; margin-bottom: 25px;
-            border: 1px solid var(--accent);
         }
 
-        /* --- SERVICES (LUXURY GRID) --- */
-        .service-grid { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 40px;
-        }
+        /* --- SERVICES --- */
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
         .service-card {
             background: white; padding: 50px 40px; border-radius: 12px;
             border-top: 3px solid transparent; box-shadow: var(--shadow-soft);
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); position: relative; overflow: hidden;
+            transition: all 0.5s; position: relative; overflow: hidden;
         }
         .service-card::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
@@ -272,22 +241,45 @@
         }
         .service-card:hover::before { transform: scaleX(1); }
         .service-card:hover { transform: translateY(-15px); box-shadow: var(--shadow-3d); }
-        
         .service-icon { font-size: 3rem; color: var(--accent); margin-bottom: 25px; transition: 0.5s; }
-        .service-card h3 { font-size: 1.6rem; margin-bottom: 15px; transition: 0.5s; }
-        .service-card p { font-size: 1rem; color: var(--text-light); line-height: 1.7; transition: 0.5s; }
         
-        .service-card:hover .service-icon { transform: scale(1.1); color: var(--primary); }
-        .service-card:hover h3 { color: var(--accent); }
+        /* --- NEW FEATURE: SUCCESS STORIES --- */
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .testimonial-card {
+            background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); padding: 40px;
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white;
+            transition: 0.3s;
+        }
+        .testimonial-card:hover { background: rgba(255,255,255,0.1); transform: scale(1.02); }
+        .stars { color: var(--accent); margin-bottom: 15px; }
 
-        /* --- NRI SECTION (HIGH IMPACT) --- */
+        /* --- NEW FEATURE: FAQ ACCORDION --- */
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item {
+            background: white; border-radius: 8px; margin-bottom: 15px;
+            box-shadow: var(--shadow-soft); overflow: hidden;
+        }
+        .faq-question {
+            padding: 20px 30px; cursor: pointer; display: flex; justify-content: space-between;
+            align-items: center; font-weight: 700; color: var(--primary);
+            transition: 0.3s;
+        }
+        .faq-question:hover { background: #f9f9f9; color: var(--accent); }
+        .faq-answer {
+            max-height: 0; overflow: hidden; padding: 0 30px;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            color: #666; font-size: 0.95rem; line-height: 1.6;
+        }
+        .faq-item.active .faq-answer { max-height: 200px; padding: 20px 30px; }
+        .faq-item.active .faq-question { color: var(--accent); }
+        .faq-icon { transition: 0.3s; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+
+        /* --- NRI SECTION --- */
         #nri { 
             background: linear-gradient(rgba(2, 6, 13, 0.96), rgba(2, 6, 13, 0.92)), url('https://www.transparenttextures.com/patterns/cubes.png');
             color: white; position: relative; overflow: hidden; padding: 150px 0;
         }
-        .nri-intro { max-width: 800px; margin: 0 auto 70px; text-align: center; }
-        .nri-intro h2 { color: white; font-size: 3.5rem; }
-        
         .nri-workflow {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 40px; margin-bottom: 70px;
@@ -301,11 +293,9 @@
             background: rgba(197, 160, 89, 0.15); border-color: var(--accent); 
             transform: translateY(-10px);
         }
-        .workflow-icon { font-size: 3rem; color: var(--accent); margin-bottom: 25px; display: inline-block; }
-        .workflow-item h4 { color: white; font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 1px; }
 
         /* --- CONTACT --- */
-        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: stretch; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; }
         .contact-box { background: #0a1020; padding: 60px; border-radius: 12px; box-shadow: var(--shadow-3d); }
         .contact-item { display: flex; gap: 25px; margin-bottom: 40px; align-items: center; }
         .contact-icon-box {
@@ -321,7 +311,7 @@
             position: fixed; bottom: 40px; right: 40px; background: var(--whatsapp-green); color: white;
             width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center;
             justify-content: center; font-size: 38px; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5); 
-            z-index: 2000; text-decoration: none; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 2000; text-decoration: none; transition: 0.4s;
         }
         .floating-wa:hover { transform: scale(1.15); }
 
@@ -329,51 +319,32 @@
         .hamburger { display: none; font-size: 1.8rem; cursor: pointer; color: var(--primary); }
         .overlay-menu { height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; right: 0; background-color: var(--primary); overflow-x: hidden; transition: 0.5s; display: flex; flex-direction: column; justify-content: center; }
         .overlay-content { width: 100%; text-align: center; }
-        .overlay-menu a { padding: 20px; text-decoration: none; font-size: 2rem; color: #fff; display: block; font-family: 'Playfair Display', serif; transition: 0.3s; }
-        .overlay-menu a:hover { color: var(--accent); letter-spacing: 2px; }
+        .overlay-menu a { padding: 20px; text-decoration: none; font-size: 2rem; color: #fff; display: block; font-family: 'Playfair Display', serif; }
         .closebtn { position: absolute; top: 30px; right: 45px; font-size: 60px !important; }
 
-        @media (max-width: 1200px) {
-             .hero-text h1 { font-size: 3.8rem; }
-        }
-
         @media (max-width: 992px) {
-            .logo-main { font-size: 1.1rem; } .logo-sub { font-size: 0.65rem; }
-            .hero { padding-top: 120px; align-items: flex-start; text-align: center; }
-            .hero-content { grid-template-columns: 1fr; gap: 40px; }
             .hero-text h1 { font-size: 3.2rem; }
-            .hero-text p { margin: 0 auto 40px; }
+            .hero-content { grid-template-columns: 1fr; gap: 40px; text-align: center; }
             .hero-btns { justify-content: center; }
             .hero-card-3d { display: none; } 
             .nav-links { display: none; }
             .hamburger { display: block; margin-left: auto; }
-            .contact-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: 1fr 1fr; }
-            .process-grid { grid-template-columns: 1fr 1fr; }
-            .section-title { font-size: 2.5rem; }
-            .founders-grid { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 600px) {
-            .process-grid { grid-template-columns: 1fr; }
-            .hero-text h1 { font-size: 2.8rem; }
-             .hero-btns { flex-direction: column; width: 100%; }
-             .hero-btns .btn, .hero-btns .btn-outline { width: 100%; }
-             .logo-icon { font-size: 1.8rem; margin-right: 10px; }
-             .logo-main { font-size: 0.9rem; }
+            .contact-grid, .stats-grid, .founders-grid { grid-template-columns: 1fr; }
+            .logo-main { font-size: 0.9rem; }
+            .logo-sub { font-size: 0.6rem; }
         }
     </style>
 </head>
 <body>
 
     <div class="scroll-progress" id="scrollProgress"></div>
-    <a href="https://wa.me/919166866841" class="floating-wa"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/919414166841" class="floating-wa"><i class="fab fa-whatsapp"></i></a>
 
     <div id="myNav" class="overlay-menu">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
         <div class="overlay-content">
             <a href="#home" onclick="closeNav()">Home</a>
             <a href="#legacy" onclick="closeNav()">The Firm</a>
-            <a href="#process" onclick="closeNav()">Process</a>
             <a href="#services" onclick="closeNav()">Services</a>
             <a href="#nri" onclick="closeNav()">NRI Wing</a>
             <a href="#contact" onclick="closeNav()">Contact</a>
@@ -415,12 +386,12 @@
                 
                 <div class="hero-btns">
                     <a href="#contact" class="btn">GET LEGAL ADVICE</a>
-                    <a href="tel:+919166866841" class="btn-outline"><i class="fas fa-phone" style="margin-right: 10px;"></i> CALL NOW</a>
+                    <a href="tel:+919414166841" class="btn-outline"><i class="fas fa-phone" style="margin-right: 10px;"></i> CALL NOW</a>
                 </div>
             </div>
             
-            <div class="hero-card-3d" data-tilt data-tilt-max="10" data-tilt-speed="1000" data-tilt-perspective="2000">
-                <i class="fas fa-gavel text-gold" style="font-size: 3.5rem; margin-bottom: 25px; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.5));"></i>
+            <div class="hero-card-3d" data-tilt data-tilt-max="10" data-tilt-speed="1000">
+                <i class="fas fa-gavel text-gold" style="font-size: 3.5rem; margin-bottom: 25px;"></i>
                 <h3 style="color: white; margin-bottom: 20px; font-size: 1.8rem;">The Bohara Advantage</h3>
                 <ul style="list-style: none; opacity: 0.9; padding-left: 5px;">
                     <li style="margin-bottom: 18px; display: flex; align-items: center; font-size: 1.1rem;"><i class="fas fa-check-circle text-gold" style="margin-right: 15px;"></i> 55 Years of Legal Mastery</li>
@@ -443,15 +414,41 @@
         </div>
     </section>
 
-    <section id="legacy" class="section-padding">
+    <section class="section-padding" style="background: white;">
+        <div class="container">
+            <div class="section-title-wrapper">
+                <span class="section-subtitle">CORE VALUES</span>
+                <h2 class="section-title">Why Udaipur Trusts Us</h2>
+            </div>
+            <div class="values-grid">
+                <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-user-shield value-icon"></i>
+                    <h3 class="value-title">Absolute Confidentiality</h3>
+                    <p>Your case details are guarded with the highest level of professional secrecy and discretion.</p>
+                </div>
+                <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-balance-scale value-icon"></i>
+                    <h3 class="value-title">Ethical Practice</h3>
+                    <p>We believe in transparent billing and honest legal advice. No false promises, just results.</p>
+                </div>
+                <div class="value-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-hourglass-half value-icon"></i>
+                    <h3 class="value-title">Expedited Resolution</h3>
+                    <p>We use strategic injunctions and aggressive filings to resolve disputes faster than the norm.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="legacy" class="section-padding bg-light">
         <div class="container" data-aos="fade-up">
             <div class="section-title-wrapper">
                 <span class="section-subtitle">THE FIRM</span>
                 <h2 class="section-title">A Legacy of Justice</h2>
             </div>
-            <div class="legacy-content">
-                <p class="legacy-text">
-                    In the corridors of the Rajasthan High Court and the Ajmer Revenue Board, the name <strong>Advocate Sampatlal & Sanjay Bohara</strong> is synonymous with unshakeable integrity and legal mastery. Founded by the visionary Advocate Sampatlal Bohara, we have evolved into a powerhouse combining old-school ethics with modern legal strategies.
+            <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.2rem; line-height: 1.9; color: var(--text-main);">
+                    In the corridors of the Rajasthan High Court and the Ajmer Revenue Board, the name <strong>Advocate Sampatlal & Sanjay Bohara</strong> is synonymous with unshakeable integrity. Founded by the visionary Advocate Sampatlal Bohara, we have evolved into a powerhouse combining old-school ethics with modern legal strategies.
                 </p>
                 <blockquote class="legacy-quote">
                     <i class="fas fa-quote-left"></i>
@@ -462,7 +459,7 @@
         </div>
     </section>
 
-    <section id="founders" class="section-padding" style="background: var(--light-gray);">
+    <section id="founders" class="section-padding">
         <div class="container">
             <div class="section-title-wrapper">
                 <span class="section-subtitle">LEADERSHIP</span>
@@ -473,9 +470,9 @@
                     <div class="founder-header">
                         <img src="founder1.jpg" alt="Advocate Sampat Lal Bohara" class="founder-img" onerror="this.src='https://via.placeholder.com/180?text=SLB'">
                         <h3>Adv. Sampat Lal Bohara</h3>
-                        <span class="founder-role">FOUNDER & SENIOR COUNSEL</span>
+                        <p style="color: var(--accent); font-weight: 700; margin-top: 10px;">FOUNDER & SENIOR COUNSEL</p>
                     </div>
-                    <div class="founder-body">
+                    <div style="padding: 40px; text-align: justify;">
                         <p>With over <strong>55 years of bar practice</strong>, Mr. Sampat Lal Bohara is a titan in Civil Law. His eidetic memory of case laws and strategic foresight has saved thousands of clients from losing their ancestral assets. He is a mentor to the legal fraternity in Udaipur.</p>
                     </div>
                 </div>
@@ -484,9 +481,9 @@
                     <div class="founder-header">
                         <img src="founder2.jpg" alt="Advocate Sanjay Bohara" class="founder-img" onerror="this.src='https://via.placeholder.com/180?text=SB'">
                         <h3>Adv. Sanjay Bohara</h3>
-                        <span class="founder-role">MANAGING PARTNER | LLM (GOLD MEDALIST)</span>
+                        <p style="color: var(--accent); font-weight: 700; margin-top: 10px;">MANAGING PARTNER | LLM (GOLD MEDALIST)</p>
                     </div>
-                    <div class="founder-body">
+                    <div style="padding: 40px; text-align: justify;">
                         <p>Former <strong>President of the Law College</strong> and a Gold Medalist, Mr. Sanjay Bohara brings 22+ years of dynamism. He specializes in complex <strong>Revenue Board Appeals</strong> and <strong>NRI Property Protection</strong>. He is known for his aggressive defense against land grabbing.</p>
                     </div>
                 </div>
@@ -494,50 +491,7 @@
         </div>
     </section>
 
-    <section id="process" class="section-padding bg-dark">
-        <div class="container">
-            <div class="section-title-wrapper">
-                <span class="section-subtitle">HOW WE WORK</span>
-                <h2 class="section-title" style="color: white;">Engagement Process</h2>
-            </div>
-            <div class="process-grid">
-                <div class="process-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="process-num">01</div>
-                    <div class="process-content">
-                        <div class="process-icon-box"><i class="fas fa-comments text-gold" style="font-size: 1.8rem;"></i></div>
-                        <h4>Consultation</h4>
-                        <p style="opacity: 0.8;">In-depth analysis of facts and documents to understand core legal issues.</p>
-                    </div>
-                </div>
-                <div class="process-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="process-num">02</div>
-                    <div class="process-content">
-                        <div class="process-icon-box"><i class="fas fa-chess text-gold" style="font-size: 1.8rem;"></i></div>
-                        <h4>Strategy</h4>
-                        <p style="opacity: 0.8;">Developing a tailored legal roadmap and identifying strong precedents.</p>
-                    </div>
-                </div>
-                <div class="process-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="process-num">03</div>
-                    <div class="process-content">
-                        <div class="process-icon-box"><i class="fas fa-balance-scale-right text-gold" style="font-size: 1.8rem;"></i></div>
-                        <h4>Execution</h4>
-                        <p style="opacity: 0.8;">Filing petitions and aggressive representation in all court hearings.</p>
-                    </div>
-                </div>
-                <div class="process-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="process-num">04</div>
-                    <div class="process-content">
-                        <div class="process-icon-box"><i class="fas fa-trophy text-gold" style="font-size: 1.8rem;"></i></div>
-                        <h4>Resolution</h4>
-                        <p style="opacity: 0.8;">Achieving favorable outcomes through judgment or settlement.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="section-padding" style="background: var(--light-gray);">
+    <section id="services" class="section-padding bg-light">
         <div class="container">
             <div class="section-title-wrapper">
                 <span class="section-subtitle">AREAS OF PRACTICE</span>
@@ -579,44 +533,99 @@
         </div>
     </section>
 
+    <section class="section-padding bg-dark">
+        <div class="container">
+            <div class="section-title-wrapper">
+                <span class="section-subtitle">SUCCESS STORIES</span>
+                <h2 class="section-title" style="color: white;">Client Testimonials</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p style="font-style: italic; margin-bottom: 20px;">"I reside in the UK and my ancestral land was encroached. Sanjay Sir handled the entire case in the Revenue Board without me visiting India once. Truly a blessing."</p>
+                    <h5 style="color: var(--accent);">— Rajesh Mehta, London</h5>
+                </div>
+                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p style="font-style: italic; margin-bottom: 20px;">"Their knowledge of the Mines & Minerals Act is unmatched. They secured our lease renewal when everyone else said it was impossible."</p>
+                    <h5 style="color: var(--accent);">— Ananta Mining Corp.</h5>
+                </div>
+                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p style="font-style: italic; margin-bottom: 20px;">"Sampat Lal Ji is a legend. His guidance in our family partition suit helped us resolve a 20-year-old dispute amicably."</p>
+                    <h5 style="color: var(--accent);">— Vikram Singh, Udaipur</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="nri" class="section-padding">
         <div class="container" style="position: relative; z-index: 2;">
-            <div class="nri-intro" data-aos="fade-up">
+            <div class="text-center" data-aos="fade-up">
                 <i class="fas fa-plane-departure text-gold" style="font-size: 4rem; margin-bottom: 30px;"></i>
-                <h2>The Dedicated NRI Legal Division</h2>
-                <p style="font-size: 1.4rem; opacity: 0.9; line-height: 1.6; font-weight: 300;">
+                <h2 style="font-size: 3rem; margin-bottom: 20px;">The Dedicated NRI Legal Division</h2>
+                <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto; opacity: 0.9;">
                     Living abroad shouldn't cost you your peace of mind regarding Indian assets. We act as your local legal guardians, managing property disputes and inheritance claims remotely.
-                    <br><span class="text-gold" style="font-weight: 700; margin-top: 20px; display: block; font-size: 1.6rem;">Zero Travel Required to India.</span>
+                    <br><span class="text-gold" style="font-weight: 700; margin-top: 20px; display: block;">Zero Travel Required to India.</span>
                 </p>
             </div>
 
-            <div class="nri-workflow" data-aos="fade-up" data-aos-delay="200">
+            <div class="nri-workflow" style="margin-top: 60px;" data-aos="fade-up" data-aos-delay="200">
                 <div class="workflow-item">
-                    <i class="fas fa-video workflow-icon"></i>
+                    <i class="fas fa-video" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 15px;"></i>
                     <h4>1. Virtual Consult</h4>
                     <p>Initial briefing via secure Zoom/WhatsApp video calls.</p>
                 </div>
                 <div class="workflow-item">
-                    <i class="fas fa-file-contract workflow-icon"></i>
+                    <i class="fas fa-file-contract" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 15px;"></i>
                     <h4>2. Remote POA</h4>
                     <p>Guidance on executing Power of Attorney from your country.</p>
                 </div>
                 <div class="workflow-item">
-                    <i class="fas fa-gavel workflow-icon"></i>
+                    <i class="fas fa-gavel" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 15px;"></i>
                     <h4>3. Court Action</h4>
                     <p>We handle all filings and hearings without your presence.</p>
                 </div>
                 <div class="workflow-item">
-                    <i class="fas fa-mobile-alt workflow-icon"></i>
+                    <i class="fas fa-mobile-alt" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 15px;"></i>
                     <h4>4. Digital Updates</h4>
                     <p>Real-time case status updates delivered digitally.</p>
                 </div>
             </div>
-            
-            <div class="text-center" data-aos="zoom-in">
-                <a href="https://wa.me/919166866841" class="btn" style="background: var(--whatsapp-green); border:none; padding: 20px 50px; font-size: 1.1rem;">
-                    <i class="fab fa-whatsapp" style="margin-right: 15px; font-size: 1.3rem;"></i> Start NRI Consultation
-                </a>
+        </div>
+    </section>
+
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="section-title-wrapper">
+                <span class="section-subtitle">HAVE QUESTIONS?</span>
+                <h2 class="section-title">Expert Answers</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        How do I book a consultation? <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        You can book a consultation by calling us directly at +91 94141 66841 or sending us a message on WhatsApp. We offer both in-person meetings at our Udaipur office and virtual consultations for out-of-town clients.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you handle cases in the Rajasthan High Court? <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, we have extensive experience representing clients in the Rajasthan High Court (Jodhpur & Jaipur benches) as well as the Board of Revenue in Ajmer.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can you manage my property dispute if I live abroad? <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Absolutely. Our specialized NRI Wing is designed for this exact purpose. Through a Power of Attorney (POA), we can manage the entire litigation process without requiring you to travel to India.
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -644,7 +653,7 @@
                         <div class="contact-icon-box"><i class="fas fa-phone-alt"></i></div>
                         <div>
                             <h5 style="color: var(--accent); margin-bottom: 10px; letter-spacing: 2px;">PHONE</h5>
-                            <p><a href="tel:+919166866841" class="contact-link" style="font-size: 1.3rem; font-weight: 700;">+91 9166866841</a></p>
+                            <p><a href="tel:+919414166841" class="contact-link" style="font-size: 1.3rem; font-weight: 700;">+91 94141 66841</a></p>
                         </div>
                     </div>
 
@@ -658,7 +667,7 @@
                 </div>
 
                 <div style="height: 100%; min-height: 500px; border-radius: 12px; overflow: hidden; border: 2px solid rgba(197, 160, 89, 0.3); box-shadow: var(--shadow-3d);" data-aos="fade-left">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3628.0645672283!2d73.68!3d24.58!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDM0JzQ4LjAiTiA3M8KwNDEnMjQuMCJF!5e0!3m2!1sen!2sin!4v1625000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/place/Advocate+Sampatlal+%26+Sanjay+Bohara,+8-B,+hazareshwar+mahadev+colony,+Near+Court+Chouraha,+Madhuban,+Udaipur,+Rajasthan+313001/data=!4m2!3m1!1s0x3967e52aa0659365:0x3905f103645efb30?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESCjExLjE1Mi4xMDAYACDXggMqdSw5NDI0MjU2OCw5NDIyMzI5OSw5NDIxNjQxMyw5NDIxMjQ5Niw5NDIwNzM5NCw5NDIwNzUwNiw5NDIwODUwNiw5NDIxNzUyMyw5NDIxODY1Myw5NDIyOTgzOSw0NzA4NzExOCw0NzA4NDM5Myw5NDIxMzIwMEICSU4%3D" width="100%" height="100%" style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);" allowfullscreen="" loading="lazy"></iframe>
                 </div>
 
             </div>
@@ -686,25 +695,23 @@
 
         // Scroll Progress & Navbar Effect
         window.onscroll = function() {
-            // Progress Bar
             var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             var scrolled = (winScroll / height) * 100;
             document.getElementById("scrollProgress").style.width = scrolled + "%";
 
-            // Navbar Transparency
             const header = document.querySelector("header");
             if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
                 header.style.padding = "10px 0";
                 header.style.background = "rgba(255, 255, 255, 0.98)";
                 header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.1)";
             } else {
-                header.style.padding = "20px 0";
-                header.style.background = "rgba(255, 255, 255, 0.95)";
+                header.style.padding = "15px 0";
+                header.style.background = "rgba(255, 255, 255, 0.98)";
                 header.style.boxShadow = "none";
             }
 
-            // Counters
+            // Counters Logic
             const counters = document.querySelectorAll('.counter');
             const statsSection = document.querySelector('.stats-bar');
             if(statsSection) {
@@ -717,7 +724,7 @@
                         const inc = target / 100;
                         if(count < target) {
                             counter.innerText = Math.ceil(count + inc);
-                            setTimeout(() => {}, 20); // Just a trigger, logic handled by loop
+                            setTimeout(() => {}, 20);
                         } else {
                             counter.innerText = target + "+";
                         }
@@ -726,14 +733,22 @@
             }
         };
 
-        // VanillaTilt for 3D Elements (Smoother settings)
-        VanillaTilt.init(document.querySelectorAll(".founder-card, .process-card"), {
+        // VanillaTilt
+        VanillaTilt.init(document.querySelectorAll(".founder-card, .service-card, .hero-card-3d"), {
             max: 10, speed: 400, glare: true, "max-glare": 0.2, scale: 1.02
         });
-        
-        // Specific tilt for Hero Card
-        VanillaTilt.init(document.querySelector(".hero-card-3d"), {
-            max: 15, speed: 1000, glare: true, "max-glare": 0.3, scale: 1.05, perspective: 2000
+
+        // FAQ Accordion Logic
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
+                // Optional: Close others
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) otherItem.classList.remove('active');
+                });
+            });
         });
     </script>
 </body>
